@@ -20,13 +20,15 @@ public class zadanie2 {
     public static void main(String[] args) {
         OrderDao orderDao = new OrderDao();
         /*
-        List<Order> orders = orderDao.findAfterDate(LocalDateTime.of(2020, 2, 28, 15, 35, 05));
+        List<Order> orders = orderDao.findAfterDate(LocalDateTime.of(2019,2,28,15,35,05));
         orders.forEach(order -> System.out.println(order.toString()));*/
         GenericDao<Product> productDao = new GenericDao<>(Product.class);
         Product product = productDao.findById(2);
-        List<Order> orders=orderDao.findAllContainingProduct(product);
+        List<Order> orders = orderDao.findAllContainingProduct(product);
         System.out.println("debug");
         orders.forEach(order -> System.out.println(order.toString()));
+
+
 
     }
 }
