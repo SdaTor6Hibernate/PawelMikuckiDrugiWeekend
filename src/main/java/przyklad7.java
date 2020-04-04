@@ -1,4 +1,5 @@
 import dao.GenericDao;
+import dao.OrderDao;
 import model.Product;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ public class przyklad7 {
         System.out.println("debug");
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.update(product);
+        session.merge(product);
         product.setDescription("Pyszna");
         Hibernate.initialize(product.getCategory());
         session.beginTransaction();
@@ -19,5 +20,6 @@ public class przyklad7 {
         session.getTransaction().commit();
         System.out.println("debug");
         session.close();
+
     }
 }
