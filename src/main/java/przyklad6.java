@@ -1,4 +1,5 @@
 import model.Address;
+import model.Address_;
 import model.Country;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class przyklad6 {
         CriteriaQuery<Address> query = builder.createQuery(Address.class);
         Root<Address> addressRoot = query.from(Address.class);
         addressRoot.fetch("country");
-        query.select(addressRoot).where(builder.like(addressRoot.get("city"),"Gdańsk"));
+        query.select(addressRoot).where(builder.like(addressRoot.get(Address_.city),"Gdańsk"));
         TypedQuery<Address> q = session.createQuery(query);
         List<Address> addressList = q.getResultList();
         session.close();
